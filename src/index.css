@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0F0F0F;
+    color: #F8F5EE;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0F0F0F;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(212,175,55,0.25);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(212,175,55,0.5);
+  }
+
+  select {
+    appearance: none;
+  }
+
+  /* Premium focus ring */
+  input:focus, textarea:focus, select:focus {
+    box-shadow: 0 0 0 1px rgba(212,175,55,0.3);
+  }
+}
+
+@layer components {
+  /* Premium gold button base */
+  .btn-gold {
+    @apply bg-gold text-luxury-black px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-medium
+           hover:bg-gold-hover transition-all duration-300;
+    box-shadow: 0 2px 10px rgba(212,175,55,0.2);
+  }
+  .btn-gold:hover {
+    box-shadow: 0 4px 20px rgba(212,175,55,0.35);
+  }
+
+  /* Premium outline button */
+  .btn-outline-gold {
+    @apply border border-gold/40 text-gold px-8 py-3.5 text-xs tracking-[0.2em] uppercase
+           hover:bg-gold hover:text-luxury-black transition-all duration-300;
+  }
+
+  /* Luxury card */
+  .luxury-card {
+    @apply bg-luxury-card border border-white/[0.06] hover:border-gold-accent/30
+           transition-all duration-500;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  .luxury-card:hover {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Premium input field */
+  .luxury-input {
+    @apply w-full bg-white/[0.04] border border-white/[0.1] text-ivory text-sm px-4 py-3.5
+           focus:outline-none focus:border-gold/40 placeholder-white/20 transition-all duration-300;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply text-gold/60 text-[11px] tracking-[0.4em] uppercase mb-3;
+  }
+
+  /* Section divider */
+  .section-divider {
+    @apply w-16 h-px bg-gold/50 mx-auto mt-6;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: #D4AF37;
+  }
+  .text-gold-accent {
+    color: #E6C56A;
+  }
+  .bg-gold {
+    background-color: #D4AF37;
+  }
+  .bg-gold-hover {
+    background-color: #B8902E;
+  }
+  .border-gold {
+    border-color: #D4AF37;
+  }
+  .text-ivory {
+    color: #F8F5EE;
+  }
+  .text-luxury-gray {
+    color: #9A9A9A;
+  }
+  .bg-luxury-black {
+    background-color: #0F0F0F;
+  }
+  .bg-luxury-card {
+    background-color: #1B1B1B;
+  }
+}
