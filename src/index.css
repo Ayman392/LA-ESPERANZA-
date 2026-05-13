@@ -12,7 +12,7 @@
   }
 
   body {
-    background-color: #F5F5F5;
+    background-color: #F6F1E9;
     color: #F8F5EE;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -111,9 +111,9 @@
     color: #393E46;
   }
   .bg-luxury-black {
-    background-color: #F7FBFC;
+    background-color: #F6F1E9;
   }
   .bg-luxury-card {
-    background-color: #FCFCFA;
+    background-color: #F7F7F7;
   }
 }

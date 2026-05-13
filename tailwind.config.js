@@ -9,7 +9,7 @@ export default {
           'gold-hover': '#B8860B',
 
           ivory: '#111827',          // headings
-          'luxury-black': '#F7FBFC', // main website bg
+          'luxury-black': '#F6F1E9', // main website bg
           'luxury-card': '#FFFFFF',  // cards
           'luxury-gray': '#6B7280',  // muted text
 },
