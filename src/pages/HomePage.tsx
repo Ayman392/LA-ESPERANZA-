@@ -85,7 +85,7 @@ export default function HomePage() {
           <img
             src="/assets/hero/background.jpg"
             alt="Luxury perfume hero"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[40%_center] md:object-center"
           />
         <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/70 via-luxury-black/50 to-luxury-black" />
       </div>
