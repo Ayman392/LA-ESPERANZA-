@@ -4,15 +4,15 @@ export default {
   theme: {
     extend: {
           colors: {
-            gold: '#C89B3C',
-            'gold-accent': '#D9B65A',
-            'gold-hover': '#B8860B',
+          gold: '#C89B3C',
+          'gold-accent': '#D9B65A',
+          'gold-hover': '#B8860B',
 
-            ivory: '#111111',
-            'luxury-black': '#FFFFFF',
-            'luxury-card': '#FFFFFF',
-            'luxury-gray': '#555555',
-  },
+          ivory: '#111827',          // headings
+          'luxury-black': '#F7FBFC', // main website bg
+          'luxury-card': '#FFFFFF',  // cards
+          'luxury-gray': '#6B7280',  // muted text
+},
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },

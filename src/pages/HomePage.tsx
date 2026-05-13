@@ -83,7 +83,7 @@ export default function HomePage() {
       <section className="relative h-screen min-h-[600px] overflow-hidden">
         <div ref={heroRef} className="absolute inset-0 scale-110">
           <img
-            src="https://images.pexels.com/photos/1034584/pexels-photo-1034584.jpeg?auto=compress&cs=tinysrgb&w=1600"
+            src="/images/background.jpg"
             alt="Luxury perfume hero"
             className="w-full h-full object-cover"
           />
@@ -91,11 +91,11 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <p className="text-gold/70 text-[11px] tracking-[0.5em] uppercase mb-6 animate-fade-in">
+          <p className="text-[#e7b64b] text-[20px] tracking-[0.5em] uppercase mb-6 animate-fade-in">
             Luxury in Every Drop
           </p>
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-ivory mb-6 leading-tight animate-fade-in-up">
-            LA <span className="text-gold">ESPERANZA</span>
+          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#111827] mb-6 leading-tight animate-fade-in-up">
+            LA <span className="text-[#e7b64b]">ESPERANZA</span>
           </h1>
           <p className="text-luxury-gray text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed animate-fade-in-up delay-100">
             Where rare ingredients meet masterful artistry. Discover fragrances that transcend time — crafted for those who demand nothing less than extraordinary.
@@ -103,16 +103,16 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up delay-200">
             <Link
               to="/products"
-              className="group flex items-center gap-3 btn-gold"
+              className="group flex items-center gap-3 btn-gold rounded-xl"
             >
               Shop Now
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/products"
               className="flex items-center gap-2 text-luxury-gray hover:text-gold-accent text-xs tracking-[0.2em] uppercase transition-colors duration-200"
             >
-              Explore Collection <ChevronRight size={14} />
+              Explore Collection <ChevronRight size={18} />
             </Link>
           </div>
         </div>

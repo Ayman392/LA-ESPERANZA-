@@ -35,45 +35,45 @@ export default function ProductCard({ product }: Props) {
       {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg('')} />}
       <Link
         to={`/products/${product.slug}`}
-        className="group relative bg-luxury-card border border-white/[0.06] hover:border-gold-accent/30 rounded-sm overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
+        className="group relative bg-luxury-card border border-[#E7E5E4] shadow-sm h-[550px] p-4 border-white/[0.06] hover:border-gold-accent/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
       >
         {/* Discount badge */}
         {product.discounted_price && (
-          <div className="absolute top-3 left-3 z-10 bg-gold text-luxury-black text-[10px] font-bold tracking-wider px-2 py-1">
+          <div className="absolute top-8 left-8 z-10 bg-gold text-luxury-black text-[15px] rounded-xl font-bold tracking-wider px-2 py-1">
             -{getDiscountPercent(product.price, product.discounted_price)}%
           </div>
         )}
 
         {/* Image */}
-        <div className="relative overflow-hidden aspect-[3/4] bg-luxury-card">
+        <div className="relative overflow-hidden aspect-[3/4] bg-luxury-card h-[320px] w-full rounded-2xl">
           <img
             src={product.cover_image}
             alt={product.name}
             loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
           />
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-luxury-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
             <button
               onClick={handleAddToCart}
-              className="bg-gold text-luxury-black p-3 rounded-full hover:bg-gold-hover transition-all duration-200 transform translate-y-4 group-hover:translate-y-0 shadow-gold"
+              className="bg-gold text-luxury-black p-4 rounded-full hover:bg-gold-hover transition-all duration-200 transform translate-y-4 group-hover:translate-y-0 shadow-gold"
               aria-label="Add to cart"
             >
-              <ShoppingBag size={16} />
+              <ShoppingBag size={20} />
             </button>
             <Link
               to={`/products/${product.slug}`}
-              className="bg-white/10 backdrop-blur-sm text-ivory p-3 rounded-full hover:bg-white/20 transition-all duration-200 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75"
+              className="bg-white/10 backdrop-blur-sm text-ivory p-4 rounded-full hover:bg-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-200 delay-75"
               aria-label="Quick view"
             >
-              <Eye size={16} />
+              <Eye size={20} />
             </Link>
           </div>
         </div>
 
         {/* Info */}
         <div className="p-4">
-          <p className="text-luxury-gray text-[10px] tracking-[0.25em] uppercase mb-1">
+          <p className="text-luxury-black text-[25px] tracking-[0.5em] uppercase mb-1.5">
             {product.category}
           </p>
           <h3 className="text-ivory font-serif text-base mb-2 leading-snug group-hover:text-gold-accent transition-colors duration-200">
@@ -90,7 +90,7 @@ export default function ProductCard({ product }: Props) {
             {product.sizes.map((s) => (
               <span
                 key={s.size}
-                className="text-[10px] text-luxury-gray border border-white/[0.08] px-1.5 py-0.5 rounded-sm"
+                className="text-[15px] text-luxury-black border border-black/[0.08] px-2.5 py-0.5 rounded-xl"
               >
                 {s.size}
               </span>
@@ -103,7 +103,7 @@ export default function ProductCard({ product }: Props) {
               {formatPrice(effectivePrice)}
             </span>
             {product.discounted_price && (
-              <span className="text-luxury-gray/50 text-sm line-through">
+              <span className="text-luxury-black/50 text-sm line-through">
                 {formatPrice(product.price)}
               </span>
             )}
