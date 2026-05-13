@@ -106,34 +106,34 @@ export default function HomePage() {
               className="group flex items-center gap-3 btn-gold rounded-xl"
             >
               Shop Now
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/products"
               className="flex items-center gap-2 text-luxury-gray hover:text-gold-accent text-xs tracking-[0.2em] uppercase transition-colors duration-200"
             >
-              Explore Collection <ChevronRight size={18} />
+              Explore Collection <ChevronRight size={20} />
             </Link>
           </div>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-luxury-gray/40 text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+          <span className="text-luxury-black text-[16px] tracking-[0.3em] uppercase">Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-gold/30 to-transparent" />
         </div>
       </section>
 
       {/* MARQUEE STRIP */}
-      <div className="bg-gold/5 border-y border-gold/15 py-4 overflow-hidden">
+      <div className="bg-[#A67C2E] border-y border-gold/15 py-4 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
           {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="inline-flex items-center gap-6 mx-8 text-gold/50 text-[11px] tracking-[0.3em] uppercase">
+            <span key={i} className="inline-flex items-center gap-6 mx-8 text-white text-[11px] tracking-[0.3em] uppercase">
               <span>Luxury Fragrances</span>
-              <span className="text-gold-accent">&#9670;</span>
+              <span className="text-white">&#9670;</span>
               <span>Crafted With Rare Ingredients</span>
-              <span className="text-gold-accent">&#9670;</span>
+              <span className="text-white">&#9670;</span>
               <span>Shipped Across Bangladesh</span>
-              <span className="text-gold-accent">&#9670;</span>
+              <span className="text-white">&#9670;</span>
             </span>
           ))}
         </div>
@@ -143,7 +143,7 @@ export default function HomePage() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="section-label">Signature Collection</p>
-          <h2 className="font-serif text-4xl md:text-5xl text-ivory">Featured Fragrances</h2>
+          <h2 className="font-serif text-2xl md:text-5xl text-ivory">Featured Fragrances</h2>
           <div className="section-divider" />
         </div>
 
@@ -156,10 +156,10 @@ export default function HomePage() {
         <div className="text-center mt-14">
           <Link
             to="/products"
-            className="group inline-flex items-center gap-3 btn-outline-gold"
+            className="group inline-flex items-center gap-3 btn-outline-gold rounded-xl"
           >
             View Full Collection
-            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </section>
@@ -197,7 +197,7 @@ export default function HomePage() {
           <div className="section-divider" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 rounded-xl">
           {[
             {
               icon: <Package size={28} />,
@@ -222,7 +222,7 @@ export default function HomePage() {
           ].map(({ icon, title, desc }) => (
             <div
               key={title}
-              className="group text-center p-8 bg-luxury-card border border-white/[0.06] hover:border-gold-accent/30 transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
+              className="group text-center p-8 bg-luxury-card border border-white/[0.06] hover:border-gold-accent/30 transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1 rounded-2xl"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-gold/20 text-gold mb-6 group-hover:bg-gold/10 group-hover:shadow-gold transition-all duration-300">
                 {icon}
@@ -247,7 +247,7 @@ export default function HomePage() {
             {testimonials.map(({ name, role, rating, comment }) => (
               <div
                 key={name}
-                className="p-8 bg-luxury-card border border-white/[0.06] hover:border-gold-accent/20 transition-all duration-500 relative hover:shadow-card-hover hover:-translate-y-1"
+                className="p-8 bg-luxury-card border border-white/[0.06] rounded-2xl hover:border-gold-accent/20 transition-all duration-500 relative hover:shadow-card-hover hover:-translate-y-1"
               >
                 <span className="absolute top-6 right-8 text-gold/10 font-serif text-6xl leading-none">"</span>
                 <div className="flex items-center gap-1 mb-4">
@@ -287,11 +287,11 @@ export default function HomePage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email address"
-                className="flex-1 bg-white/[0.04] border border-white/[0.1] text-ivory text-sm px-5 py-3.5 focus:outline-none focus:border-gold/40 placeholder-luxury-gray/50 transition-all duration-300"
+                className="flex-1 bg-white/[0.04] border border-black/[0.1] text-ivory text-sm px-5 py-3.5 focus:outline-none focus:border-gold/40 placeholder-luxury-gray/50 transition-all duration-300 rounded-2xl"
               />
               <button
                 type="submit"
-                className="btn-gold flex-shrink-0"
+                className="btn-gold flex-shrink-0 rounded-2xl"
               >
                 Subscribe
               </button>

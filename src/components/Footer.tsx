@@ -18,13 +18,13 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="text-luxury-gray hover:text-gold transition-colors duration-200">
-                <Instagram size={16} />
+                <Instagram size={20} />
               </a>
               <a href="#" className="text-luxury-gray hover:text-gold transition-colors duration-200">
-                <Facebook size={16} />
+                <Facebook size={20} />
               </a>
               <a href="#" className="text-luxury-gray hover:text-gold transition-colors duration-200">
-                <Twitter size={16} />
+                <Twitter size={20} />
               </a>
             </div>
           </div>
@@ -74,18 +74,18 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-gold mt-0.5 flex-shrink-0" />
-                <span className="text-luxury-gray text-sm">Dhaka, Bangladesh</span>
+                <span className="text-luxury-gray text-sm">Mirpur, Dhaka</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-gold flex-shrink-0" />
                 <a href="tel:+8801700000000" className="text-luxury-gray hover:text-gold text-sm transition-colors">
-                  +880 1700-000000
+                  +880 1760-977865
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-gold flex-shrink-0" />
                 <a href="mailto:hello@laesperanza.com" className="text-luxury-gray hover:text-gold text-sm transition-colors">
-                  hello@laesperanza.com
+                  laesperanza@gmail.com
                 </a>
               </li>
             </ul>
@@ -96,11 +96,11 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-gold/10 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-luxury-gray/60 text-xs tracking-wider">
+          <p className="text-luxury-gray/60 text-md tracking-wider">
             &copy; {new Date().getFullYear()} LA ESPERANZA. All rights reserved.
           </p>
-          <p className="text-gold/40 text-xs tracking-wider italic">
-            "Luxury in Every Drop"
+          <p className="text-[#A67C2E] text-md tracking-wider italic">
+            "Timeless Elegance in Every Drop"
           </p>
         </div>
       </div>

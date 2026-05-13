@@ -57,7 +57,7 @@
   /* Premium outline button */
   .btn-outline-gold {
     @apply border border-gold/40 text-gold px-8 py-3.5 text-xs tracking-[0.2em] uppercase
-           hover:bg-gold hover:text-luxury-black transition-all duration-300;
+           hover:bg-[#9C742B] hover:text-luxury-black transition-all duration-300;
   }
 
   /* Luxury card */
@@ -79,7 +79,7 @@
 
   /* Section label */
   .section-label {
-    @apply text-gold/60 text-[11px] tracking-[0.4em] uppercase mb-3;
+    @apply text-[#A67C2E] text-[11px] md:text-[16px] tracking-[0.4em] uppercase mb-3;
   }
 
   /* Section divider */
