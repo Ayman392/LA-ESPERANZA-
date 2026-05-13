@@ -83,7 +83,7 @@ export default function HomePage() {
       <section className="relative h-screen min-h-[600px] overflow-hidden">
        <div ref={heroRef} className="absolute inset-0 scale-110">
           <img
-            src="assets/hero/background.jpg"
+            src="/assets/hero/background.jpg"
             alt="Luxury perfume hero"
             className="w-full h-full object-cover"
           />
