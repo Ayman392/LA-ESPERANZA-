@@ -81,14 +81,14 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="relative h-screen min-h-[600px] overflow-hidden">
-        <div ref={heroRef} className="absolute inset-0 scale-110">
+       <div ref={heroRef} className="absolute inset-0 scale-110">
           <img
-            src="/assets/hero/background.jpg"
+            src="assets/hero/background.jpg"
             alt="Luxury perfume hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/70 via-luxury-black/50 to-luxury-black" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-luxury-black/70 via-luxury-black/50 to-luxury-black" />
+      </div>
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
           <p className="text-[#e7b64b] text-[20px] tracking-[0.5em] uppercase mb-6 animate-fade-in">
