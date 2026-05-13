@@ -38,8 +38,8 @@ export default function Navbar() {
 
   const navBg =
     scrolled || !isHome
-      ? 'bg-luxury-black/95 backdrop-blur-md shadow-card'
-      : 'bg-transparent';
+    ? 'bg-white/20 backdrop-blur-lg border border-white/30 shadow-lg'
+    : 'bg-white/10 backdrop-blur-lg border-b border-white/20';
 
   return (
     <>
@@ -49,10 +49,10 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link to="/" className="flex flex-col items-start group">
-              <span className="text-gold font-serif text-xl tracking-[0.2em] leading-none group-hover:tracking-[0.25em] transition-all duration-300">
+              <span className="text-[#B68A35] font-serif text-2xl tracking-[0.2em] leading-none group-hover:tracking-[0.25em] transition-all duration-300">
                 LA ESPERANZA
               </span>
-              <span className="text-luxury-gray text-[9px] tracking-[0.35em] uppercase">
+              <span className="text-[#374151] text-[10px] tracking-[0.35em] uppercase">
                 Luxury Perfumes
               </span>
             </Link>
@@ -63,7 +63,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-xs tracking-[0.2em] uppercase transition-colors duration-200 ${
+                  className={`text-lg tracking-[0.2em] uppercase transition-colors duration-200 ${
                     location.pathname === link.href
                       ? 'text-gold'
                       : 'text-luxury-gray hover:text-gold-accent'
@@ -81,7 +81,7 @@ export default function Navbar() {
                 className="text-luxury-gray hover:text-gold transition-colors duration-200"
                 aria-label="Search"
               >
-                <Search size={18} />
+                <Search size={24} />
               </button>
 
               <Link
@@ -89,7 +89,7 @@ export default function Navbar() {
                 className="relative text-luxury-gray hover:text-gold transition-colors duration-200"
                 aria-label="Cart"
               >
-                <ShoppingBag size={18} />
+                <ShoppingBag size={24} />
                 {itemCount() > 0 && (
                   <span className="absolute -top-2 -right-2 bg-gold text-luxury-black text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                     {itemCount()}
@@ -100,7 +100,7 @@ export default function Navbar() {
               {user ? (
                 <div className="relative group">
                   <button className="text-luxury-gray hover:text-gold transition-colors duration-200">
-                    <User size={18} />
+                    <User size={24} />
                   </button>
                   <div className="absolute right-0 top-8 w-48 bg-luxury-card border border-gold/20 rounded-sm shadow-card opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                     <Link
@@ -123,7 +123,7 @@ export default function Navbar() {
                   className="text-luxury-gray hover:text-gold transition-colors duration-200"
                   aria-label="Login"
                 >
-                  <User size={18} />
+                  <User size={24} />
                 </Link>
               )}
 

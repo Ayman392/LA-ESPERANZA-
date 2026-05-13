@@ -46,8 +46,8 @@
 @layer components {
   /* Premium gold button base */
   .btn-gold {
-    @apply bg-[#e7b64b] text-luxury-black px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-medium
-           hover:bg-[#ce9e24] transition-all duration-300;
+    @apply bg-[#B68A35] text-luxury-black px-8 py-3.5 text-xs tracking-[0.2em] uppercase font-medium
+           hover:bg-[#9C742B] transition-all duration-300;
     box-shadow: 0 2px 10px rgba(212,175,55,0.2);
   }
   .btn-gold:hover {

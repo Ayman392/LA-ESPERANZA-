@@ -91,13 +91,13 @@ export default function HomePage() {
       </div>
 
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-          <p className="text-[#e7b64b] text-[20px] tracking-[0.5em] uppercase mb-6 animate-fade-in">
-            Luxury in Every Drop
+          <p className="text-[#A67C2E] text-[18px] tracking-[0.5em] uppercase mb-6 animate-fade-in">
+            Timeless Elegance in Every Drop
           </p>
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#111827] mb-6 leading-tight animate-fade-in-up">
-            LA <span className="text-[#e7b64b]">ESPERANZA</span>
+            LA <span className="text-[#A67C2E]">ESPERANZA</span>
           </h1>
-          <p className="text-luxury-gray text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed animate-fade-in-up delay-100">
+          <p className="text-[#4B5563] text-sm md:text-base max-w-lg mx-auto mb-10 leading-relaxed animate-fade-in-up delay-100">
             Where rare ingredients meet masterful artistry. Discover fragrances that transcend time — crafted for those who demand nothing less than extraordinary.
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-4 animate-fade-in-up delay-200">
