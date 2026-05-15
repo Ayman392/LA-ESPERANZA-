@@ -80,7 +80,7 @@ export default function HomePage() {
       {toast && <Toast message={toast} onClose={() => setToast('')} />}
 
       {/* HERO */}
-      <section className="relative h-screen min-h-[600px] overflow-hidden">
+      <section className="relative h-screen min-h-screen overflow-hidden">
        <div ref={heroRef} className="absolute inset-0 scale-110">
           <img
             src="/assets/hero/background.jpg"
@@ -117,10 +117,12 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-luxury-black text-[16px] tracking-[0.3em] uppercase">Scroll</span>
-          <div className="w-px h-8 bg-gradient-to-b from-gold/30 to-transparent" />
-        </div>
+        <div className="absolute inset-x-0 bottom-6 sm:bottom-8 flex flex-col items-center gap-2 animate-bounce z-20">
+            <span className="text-luxury-black text-[14px] sm:text-[16px] tracking-[0.3em] uppercase">
+              Scroll
+            </span>
+        <div className="w-px h-6 sm:h-8 bg-gradient-to-b from-gold/30 to-transparent" />
+</div>
       </section>
 
       {/* MARQUEE STRIP */}
@@ -140,7 +142,7 @@ export default function HomePage() {
       </div>
 
       {/* FEATURED PRODUCTS */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="section-label">Signature Collection</p>
           <h2 className="font-serif text-2xl md:text-5xl text-ivory">Featured Fragrances</h2>
@@ -165,7 +167,7 @@ export default function HomePage() {
       </section>
 
       {/* BRAND STORY */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-12 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.pexels.com/photos/3059609/pexels-photo-3059609.jpeg?auto=compress&cs=tinysrgb&w=1600"
@@ -190,7 +192,7 @@ export default function HomePage() {
       </section>
 
       {/* WHY CHOOSE US */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <p className="section-label">Our Promise</p>
           <h2 className="font-serif text-4xl text-ivory">Why LA ESPERANZA</h2>
@@ -235,9 +237,9 @@ export default function HomePage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-24 bg-luxury-card/30 border-y border-white/[0.04]">
+      <section className="py12- md:py-24 bg-luxury-card/30 border-y border-white/[0.04]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 mt-10">
             <p className="section-label">Voices</p>
             <h2 className="font-serif text-4xl text-ivory">What Our Clients Say</h2>
             <div className="section-divider" />
@@ -267,7 +269,7 @@ export default function HomePage() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <p className="section-label">Stay Connected</p>
           <h2 className="font-serif text-4xl text-ivory mb-4">Join the Inner Circle</h2>

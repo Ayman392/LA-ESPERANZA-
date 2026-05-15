@@ -78,7 +78,7 @@ export default function ProductsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search fragrances..."
-              className="w-full bg-white/[0.04] border border-white/[0.08] text-ivory text-sm pl-9 pr-4 py-2.5 focus:outline-none focus:border-gold/40 placeholder-luxury-gray/40 transition-all duration-300"
+              className="w-full bg-white rounded-xl border border-gold/[0.08] text-ivory text-sm pl-9 pr-4 py-2.5 focus:outline-none focus:border-gold/40 placeholder-luxury-gray/40 transition-all duration-300"
             />
           </form>
 
@@ -93,7 +93,7 @@ export default function ProductsPage() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortOption)}
-              className="bg-luxury-card border border-white/[0.08] text-luxury-gray text-xs px-3 py-2.5 focus:outline-none focus:border-gold/40 transition-colors cursor-pointer"
+              className="bg-luxury-card border rounded-xl border-white/[0.08] text-luxury-gray text-sm px-3 py-2.5 focus:outline-none focus:border-gold/40 transition-colors cursor-pointer"
             >
               <option value="default" className="bg-luxury-card">Default</option>
               <option value="price-asc" className="bg-luxury-card">Price: Low to High</option>
@@ -102,8 +102,8 @@ export default function ProductsPage() {
             </select>
 
             {hasFilters && (
-              <button onClick={clearFilters} className="flex items-center gap-1.5 text-xs text-luxury-gray hover:text-gold transition-colors">
-                <X size={12} /> Clear
+              <button onClick={clearFilters} className="flex items-center gap-1.5 text-sm text-luxury-gray hover:text-gold transition-colors">
+                <X size={16} /> Clear
               </button>
             )}
           </div>
@@ -113,7 +113,7 @@ export default function ProductsPage() {
           {/* Sidebar */}
           <aside className={`w-56 flex-shrink-0 space-y-8 ${filtersOpen ? 'block' : 'hidden sm:block'}`}>
             <div>
-              <h3 className="text-ivory/60 text-[11px] tracking-[0.3em] uppercase mb-4">Category</h3>
+              <h3 className="text-ivory/60 text-[14px] tracking-[0.3em] uppercase mb-4">Category</h3>
               <div className="space-y-2">
                 {CATEGORIES.map(({ value, label }) => (
                   <button
@@ -132,7 +132,7 @@ export default function ProductsPage() {
             </div>
 
             <div>
-              <h3 className="text-ivory/60 text-[11px] tracking-[0.3em] uppercase mb-4">For</h3>
+              <h3 className="text-ivory/60 text-[14px] tracking-[0.3em] uppercase mb-4">For</h3>
               <div className="space-y-2">
                 {GENDER_FILTERS.map(({ value, label }) => (
                   <button
@@ -154,7 +154,7 @@ export default function ProductsPage() {
           {/* Product grid */}
           <div className="flex-1 min-w-0">
             {!loading && (
-              <p className="text-luxury-gray/60 text-xs tracking-wider mb-6">
+              <p className="text-luxury-gray/60 text-sm tracking-wider mb-6">
                 {products.length} fragrance{products.length !== 1 ? 's' : ''} found
               </p>
             )}
@@ -165,9 +165,9 @@ export default function ProductsPage() {
               </div>
             ) : products.length === 0 ? (
               <div className="text-center py-24">
-                <p className="text-luxury-gray/50 text-lg font-serif">No fragrances found</p>
-                <p className="text-luxury-gray/30 text-sm mt-2">Try adjusting your filters</p>
-                <button onClick={clearFilters} className="mt-6 text-gold text-xs tracking-wider hover:underline">
+                <p className="text-luxury-gray/50 text-xl font-serif">No fragrances found</p>
+                <p className="text-luxury-gray/30 text-lg mt-2">Try adjusting your filters</p>
+                <button onClick={clearFilters} className="mt-6 text-gold text-lg tracking-wider hover:underline">
                   Clear all filters
                 </button>
               </div>
