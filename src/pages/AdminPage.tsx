@@ -33,13 +33,15 @@ const emptyForm: ProductForm = {
 };
 
 export default function AdminPage() {
-  const { user, profile, session } = useAuthStore();
+  const { profile, session, loading: authLoading, setProfile } = useAuthStore();
   const navigate = useNavigate();
   const [tab, setTab] = useState<AdminTab>('overview');
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [customers, setCustomers] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
+  const [checkingAccess, setCheckingAccess] = useState(true);
+  const [accessError, setAccessError] = useState('');
   const [toast, setToast] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
@@ -47,10 +49,54 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (!session) { navigate('/login'); return; }
-    if (profile && !profile.is_admin) { navigate('/dashboard'); return; }
-    loadData();
-  }, [session, profile]);
+    let cancelled = false;
+
+    const checkAccess = async () => {
+      if (authLoading) return;
+
+      if (!session) {
+        navigate('/login');
+        return;
+      }
+
+      setCheckingAccess(true);
+      setAccessError('');
+
+      if (profile?.is_admin) {
+        setCheckingAccess(false);
+        await loadData();
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', session.user.id)
+        .maybeSingle();
+
+      if (cancelled) return;
+
+      if (error) {
+        setAccessError(error.message);
+        setCheckingAccess(false);
+        setLoading(false);
+        return;
+      }
+
+      if (!data?.is_admin) {
+        navigate('/dashboard');
+        return;
+      }
+
+      setProfile(data as Profile);
+      setCheckingAccess(false);
+      await loadData();
+    };
+
+    checkAccess();
+
+    return () => { cancelled = true; };
+  }, [authLoading, session, profile?.is_admin, navigate, setProfile]);
 
   const loadData = async () => {
     setLoading(true);
@@ -165,6 +211,20 @@ export default function AdminPage() {
     { key: 'customers', label: 'Customers', icon: <Users size={14} /> },
   ];
 
+  if (authLoading || (session && !profile)) {
+    return (
+      <div className="min-h-screen bg-luxury-black flex items-center justify-center pt-20">
+        <LoadingSpinner size="lg" text="Checking admin access..." />
+      </div>
+    );
+  }
+  if (authLoading || (session && !profile)) {
+  return (
+    <div className="min-h-screen bg-luxury-black flex items-center justify-center pt-20">
+      <LoadingSpinner size="lg" text="Checking admin access..." />
+    </div>
+  );
+}
   if (!profile?.is_admin && !loading) return null;
 
   return (

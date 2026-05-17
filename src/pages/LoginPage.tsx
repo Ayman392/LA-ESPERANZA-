@@ -47,7 +47,7 @@ export default function LoginPage() {
         <div className="absolute inset-0 bg-luxury-black/70" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-12">
           <h1 className="font-serif text-5xl text-ivory mb-3">LA ESPERANZA</h1>
-          <p className="text-gold/70 text-sm tracking-[0.3em] uppercase">Luxury in Every Drop</p>
+          <p className="text-gold/70 text-sm tracking-[0.3em] uppercase">Timeless Elegance in Every Drop</p>
         </div>
       </div>
 
@@ -77,7 +77,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="luxury-input"
+                className="luxury-input bg-white/60 rounded-2xl"
                 placeholder="your@email.com"
               />
             </div>
@@ -90,7 +90,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="luxury-input pr-11"
+                  className="luxury-input bg-white/60 rounded-2xl pr-11"
                   placeholder="--------"
                 />
                 <button
@@ -98,7 +98,7 @@ export default function LoginPage() {
                   onClick={() => setShowPw(!showPw)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-luxury-gray/40 hover:text-ivory/60 transition-colors"
                 >
-                  {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
+                  {showPw ? <EyeOff size={16} /> : <Eye size={20} />}
                 </button>
               </div>
             </div>
@@ -106,9 +106,9 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full btn-gold disabled:opacity-60 mt-2"
+              className="w-full btn-gold disabled:opacity-60 mt-2 rounded-2xl"
             >
-              {loading ? <LoadingSpinner size="sm" /> : 'Sign In'}
+              {loading ? <LoadingSpinner size="lg" /> : 'Sign In'}
             </button>
           </form>
 
