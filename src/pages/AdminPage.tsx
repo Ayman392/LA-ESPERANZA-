@@ -41,7 +41,6 @@ export default function AdminPage() {
   const [customers, setCustomers] = useState<Profile[]>([]);
   const [loading, setLoading] = useState(true);
   const [checkingAccess, setCheckingAccess] = useState(true);
-  const [accessError, setAccessError] = useState('');
   const [toast, setToast] = useState('');
   const [showForm, setShowForm] = useState(false);
   const [editId, setEditId] = useState<string | null>(null);
@@ -211,14 +210,14 @@ export default function AdminPage() {
     { key: 'customers', label: 'Customers', icon: <Users size={14} /> },
   ];
 
-  if (authLoading || (session && !profile)) {
+  if (authLoading || checkingAccess || (session && !profile)) {
     return (
       <div className="min-h-screen bg-luxury-black flex items-center justify-center pt-20">
         <LoadingSpinner size="lg" text="Checking admin access..." />
       </div>
     );
   }
-  if (authLoading || (session && !profile)) {
+  if (authLoading || checkingAccess || (session && !profile)) {
   return (
     <div className="min-h-screen bg-luxury-black flex items-center justify-center pt-20">
       <LoadingSpinner size="lg" text="Checking admin access..." />
@@ -267,9 +266,9 @@ export default function AdminPage() {
                   { label: 'Products', value: products.length, icon: <Package size={20} />, color: 'text-green-400' },
                   { label: 'Customers', value: customers.length, icon: <Users size={20} />, color: 'text-cyan-400' },
                 ].map(({ label, value, icon, color }) => (
-                  <div key={label} className="bg-luxury-card border border-white/[0.08] p-6 shadow-card hover:shadow-card-hover hover:border-gold-accent/20 transition-all duration-300">
+                  <div key={label} className="bg-luxury-card border rounded-2xl border-white/[0.08] p-6 shadow-card hover:shadow-card-hover hover:border-gold-accent/20 transition-all duration-300">
                     <div className={`mb-3 ${color}`}>{icon}</div>
-                    <p className="text-luxury-gray text-xs tracking-wider uppercase mb-1">{label}</p>
+                    <p className="text-luxury-gray text-md tracking-wider uppercase mb-1">{label}</p>
                     <p className={`text-2xl font-light ${color}`}>{value}</p>
                   </div>
                 ))}
@@ -283,15 +282,15 @@ export default function AdminPage() {
                   <h2 className="font-serif text-2xl text-ivory">Products ({products.length})</h2>
                   <button
                     onClick={() => { setShowForm(true); setEditId(null); setForm(emptyForm); }}
-                    className="flex items-center gap-2 btn-gold"
+                    className="flex items-center gap-2 btn-gold rounded-2xl"
                   >
-                    <Plus size={14} /> Add Product
+                    <Plus size={20} /> Add Product
                   </button>
                 </div>
 
                 <div className="space-y-3">
                   {products.map((product) => (
-                    <div key={product.id} className="flex items-center gap-4 bg-luxury-card border border-white/[0.08] p-4 hover:border-gold-accent/20 transition-all duration-300 shadow-card">
+                    <div key={product.id} className="flex items-center gap-4 bg-luxury-card border rounded-xl border-white/[0.08] p-4 hover:border-gold-accent/20 transition-all duration-300 shadow-card">
                       <div className="w-14 h-14 overflow-hidden flex-shrink-0 border border-white/[0.08]">
                         <img src={product.cover_image} alt={product.name} className="w-full h-full object-cover" />
                       </div>
@@ -300,17 +299,17 @@ export default function AdminPage() {
                         <p className="text-luxury-gray/50 text-xs">{product.category} — {product.gender}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-gold text-sm">{formatPrice(product.discounted_price ?? product.price)}</p>
+                        <p className="text-gold text-lg">{formatPrice(product.discounted_price ?? product.price)}</p>
                         {product.featured && (
-                          <span className="text-[10px] text-gold/60 border border-gold/20 px-1.5 py-0.5">Featured</span>
+                          <span className="text-[14px] text-gold/60 border border-gold/20 px-1.5 py-0.5">Featured</span>
                         )}
                       </div>
                       <div className="flex items-center gap-2">
                         <button onClick={() => handleEdit(product)} className="p-2 text-luxury-gray/40 hover:text-gold transition-colors">
-                          <Edit2 size={14} />
+                          <Edit2 size={20} />
                         </button>
                         <button onClick={() => handleDelete(product.id)} className="p-2 text-luxury-gray/40 hover:text-red-400 transition-colors">
-                          <Trash2 size={14} />
+                          <Trash2 size={20} />
                         </button>
                       </div>
                     </div>
@@ -525,3 +524,18 @@ export default function AdminPage() {
     </div>
   );
 }
+function setAccessError(msg: string) {
+  // Minimal global handler for access errors used during admin access check.
+  // An empty string clears any previous indication; a non-empty message surfaces it.
+  if (!msg) return;
+  // Log for diagnostics and show a simple alert so the user is informed.
+  // This is intentionally lightweight since the real component may manage UI state.
+  // eslint-disable-next-line no-console
+  console.error('Admin access error:', msg);
+  try {
+    alert(`Admin access error: ${msg}`);
+  } catch (e) {
+    // ignore if alerts are not available
+  }
+}
+

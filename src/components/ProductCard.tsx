@@ -35,7 +35,7 @@ export default function ProductCard({ product }: Props) {
       {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg('')} />}
       <Link
         to={`/products/${product.slug}`}
-        className="group relative bg-luxury-card border border-[#E7E5E4] shadow-sm h-[550px] p-4 border-white/[0.06] hover:border-gold-accent/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
+        className="group relative bg-luxury-card border border-[#E7E5E4] shadow-sm h-[580px] p-4 border-white/[0.06] hover:border-gold-accent/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
       >
         {/* Discount badge */}
         {product.discounted_price && (
@@ -52,7 +52,8 @@ export default function ProductCard({ product }: Props) {
             loading="lazy"
             className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Overlay on hover */}
+
+          {/* Overlay */}
           <div className="absolute inset-0 bg-luxury-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
             <button
               onClick={handleAddToCart}
@@ -61,6 +62,7 @@ export default function ProductCard({ product }: Props) {
             >
               <ShoppingBag size={20} />
             </button>
+
             <Link
               to={`/products/${product.slug}`}
               className="bg-white/10 backdrop-blur-sm text-ivory p-4 rounded-full hover:bg-white/20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-200 delay-75"
@@ -73,15 +75,21 @@ export default function ProductCard({ product }: Props) {
 
         {/* Info */}
         <div className="p-4">
-          <p className="text-luxury-black text-[25px] tracking-[0.5em] uppercase mb-1.5">
+          <p className="text-luxury-black text-[16px] tracking-[0.35em] uppercase mb-1.5">
             {product.category}
           </p>
-          <h3 className="text-ivory font-serif text-base mb-2 leading-snug group-hover:text-gold-accent transition-colors duration-200">
+
+          <h3 className="text-ivory font-serif text-lg mb-1 leading-snug group-hover:text-gold-accent transition-colors duration-200">
             {product.name}
           </h3>
 
-          {/* Fragrance notes preview */}
-          <p className="text-luxury-gray/60 text-xs mb-3 line-clamp-1">
+          {/* Inspired by */}
+          <p className="text-black text-md italic font-semibold mb-3">
+            Inspired by {product.inspiredBy ?? (product as any).inspired_by ?? ''}
+          </p>
+
+          {/* Fragrance notes */}
+          <p className="text-black text-lg mb-3 line-clamp-1">
             {product.fragrance_notes.top.join(', ')}
           </p>
 
@@ -102,6 +110,7 @@ export default function ProductCard({ product }: Props) {
             <span className="text-gold font-medium text-base">
               {formatPrice(effectivePrice)}
             </span>
+
             {product.discounted_price && (
               <span className="text-luxury-black/50 text-sm line-through">
                 {formatPrice(product.price)}
