@@ -25,18 +25,29 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    supabase
-      .from('products')
-      .select('*')
-      .eq('featured', true)
-      .eq('is_active', true)
-      .limit(6)
-      .then(({ data }) => {
+useEffect(() => {
+  const fetchFeatured = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('featured', true)
+        .eq('is_active', true)
+        .limit(6);
+
+      if (error) {
+        setToast(error.message);
+        setFeatured([]);
+      } else {
         setFeatured((data as Product[]) ?? []);
-        setLoading(false);
-      });
-  }, []);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchFeatured();
+}, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -12,10 +12,14 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   const [toastMsg, setToastMsg] = useState('');
+  const [imageError, setImageError] = useState(false);
   const { addItem } = useCartStore();
 
   const effectivePrice = product.discounted_price ?? product.price;
-  const defaultSize = product.sizes[0]?.size ?? '50ml';
+  const sizes = Array.isArray(product.sizes) ? product.sizes : [];
+  const topNotes = Array.isArray(product.fragrance_notes?.top) ? product.fragrance_notes.top : [];
+  const defaultSize = sizes[0]?.size ?? '50ml';
+  const inspiredBy = (product as any).inspired_by ?? (product as any).inspiredBy ?? '';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -37,23 +41,28 @@ export default function ProductCard({ product }: Props) {
         to={`/products/${product.slug}`}
         className="group relative bg-luxury-card border border-[#E7E5E4] shadow-sm h-[580px] p-4 border-white/[0.06] hover:border-gold-accent/30 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-card-hover hover:-translate-y-1"
       >
-        {/* Discount badge */}
         {product.discounted_price && (
           <div className="absolute top-8 left-8 z-10 bg-gold text-luxury-black text-[15px] rounded-xl font-bold tracking-wider px-2 py-1">
             -{getDiscountPercent(product.price, product.discounted_price)}%
           </div>
         )}
 
-        {/* Image */}
         <div className="relative overflow-hidden aspect-[3/4] bg-luxury-card h-[320px] w-full rounded-2xl">
-          <img
-            src={product.cover_image}
-            alt={product.name}
-            loading="lazy"
-            className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
-          />
+          {product.cover_image && !imageError ? (
+            <img
+              src={product.cover_image}
+              alt={product.name}
+              loading="lazy"
+              onError={() => setImageError(true)}
+              className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-luxury-black via-luxury-card to-luxury-black border border-gold/20 text-center px-6">
+              <span className="text-gold/70 text-[10px] tracking-[0.4em] uppercase mb-3">LA ESPERANZA</span>
+              <span className="font-serif text-3xl text-ivory">{product.name}</span>
+            </div>
+          )}
 
-          {/* Overlay */}
           <div className="absolute inset-0 bg-luxury-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
             <button
               onClick={handleAddToCart}
@@ -73,7 +82,6 @@ export default function ProductCard({ product }: Props) {
           </div>
         </div>
 
-        {/* Info */}
         <div className="p-4">
           <p className="text-luxury-black text-[16px] tracking-[0.35em] uppercase mb-1.5">
             {product.category}
@@ -83,19 +91,18 @@ export default function ProductCard({ product }: Props) {
             {product.name}
           </h3>
 
-          {/* Inspired by */}
-          <p className="text-black text-md italic font-semibold mb-3">
-            Inspired by {product.inspiredBy ?? (product as any).inspired_by ?? ''}
-          </p>
+          {inspiredBy && (
+            <p className="text-black text-md italic font-semibold mb-3">
+              Inspired by {inspiredBy}
+            </p>
+          )}
 
-          {/* Fragrance notes */}
           <p className="text-black text-lg mb-3 line-clamp-1">
-            {product.fragrance_notes.top.join(', ')}
+            {topNotes.join(', ')}
           </p>
 
-          {/* Sizes */}
           <div className="flex items-center gap-1.5 mb-3">
-            {product.sizes.map((s) => (
+            {sizes.map((s) => (
               <span
                 key={s.size}
                 className="text-[15px] text-luxury-black border border-black/[0.08] px-2.5 py-0.5 rounded-xl"
@@ -105,7 +112,6 @@ export default function ProductCard({ product }: Props) {
             ))}
           </div>
 
-          {/* Price */}
           <div className="flex items-center gap-3">
             <span className="text-gold font-medium text-base">
               {formatPrice(effectivePrice)}
